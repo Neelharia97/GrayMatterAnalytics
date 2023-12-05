@@ -1,5 +1,6 @@
 # Gray Matter Analytics
-`yea`
+Take Home Assessment for the Data Engineering position.
+
 ### Objective: 
 
 Create a scalable, easily maintainable solution that does the following: 
