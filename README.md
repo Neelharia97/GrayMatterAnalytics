@@ -50,13 +50,14 @@ Create a scalable, easily maintainable solution that does the following:
             
 
 ## Usage
-      There a multiple ways to use this as per preference. For easier use, I would prefer using the Python notebook on Google Colab to support dependencies.
-        1. Google Colab:
-           Input start_date and end_date when prompted and execute the main code block. 
-        
-        2. Running in Local
-          Running locally is a bit complicated due to PySparks dependency on Java, however, if you have PySpark setup you can use the following two commands:
-          `pip install -r requirements.txt`
-          `python main.py <start_date> <end_date>`
+There a multiple ways to use this as per preference. For easier use, I would prefer using the Python notebook on Google Colab to support dependencies.
+  1. Google Colab: [link](https://github.com/Neelharia97/GrayMatterAnalytics/blob/main/GrayMatterAnalytics.ipynb) 
+
+     Input start_date and end_date when prompted and execute the main code block. 
+  
+  3. Running in Local
+    Running locally is a bit complicated due to PySparks dependency on Java, however, if you have PySpark setup you can use the following two commands:
+       `pip install -r requirements.txt`
+      `python main.py <start_date> <end_date>`
 
 
