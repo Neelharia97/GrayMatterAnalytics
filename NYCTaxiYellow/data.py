@@ -58,5 +58,3 @@ class YellowTaxi():
                 except Exception as e:
                     print(e)
 
-object_=YellowTaxi('2018-05-1','2018-07-1')
-object_.get_data()
