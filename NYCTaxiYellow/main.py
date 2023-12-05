@@ -1,5 +1,5 @@
 from data import YellowTaxi
-from analyze import 
+from analyze import Summarize   
 import argparse
 
 if __name__ == "__main__":
@@ -17,4 +17,13 @@ if __name__ == "__main__":
         end_date=args.end_date
     )
     data_object.get_data()
+
+    summary=Summarize(
+        start_date=args.start_date,
+        end_date=args.end_date
+    )
+    summary.create_dataset()
+    summary.analysis()
+    summary.cleanUp()
+
 

@@ -2,28 +2,33 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 from itertools import chain
 import os
-spark = SparkSession \
-    .builder \
-    .appName("Python Spark SQL basic example") \
-    .config("spark.some.config.option", "some-value") \
-    .getOrCreate()
+
 
 class Summarize():
     def __init__(self,
                 start_date=None,
                 end_date=None):
         self.data=None
+        self.master_list=[]
         self.start_date=start_date
         self.end_date=end_date
         self.pwd=os.getcwd()
+        self.spark=SparkSession \
+                    .builder \
+                    .appName("Gray Matter Analytics") \
+                    .getOrCreate()
 
     def create_dataset(self):
-        master_list = []
+        self.master_list = []
         for filename in os.listdir(self.pwd):
             _,extension=os.path.splitext(filename)
             if extension=='.parquet':
-                master_list.append(filename)
-        self.data=spark.read.parquet(*master_list)
+                self.master_list.append(filename)
+        self.data=self.spark.read.parquet(*self.master_list)
+    
+    def cleanUp(self):
+        for filename in self.master_list:
+            os.remove(f"{self.pwd}/{filename}")
 
     def transformation(self):
         columns=['paymentType',
@@ -149,7 +154,3 @@ class Summarize():
             [valid_analyzed,'valid_analyzed/valid_secondary.csv'],
             [invalid_analyzed,'invalid_analyzed/invalid_secondary.csv']
         ])
-
-summary=Summarize(start_date='2018-05-1',end_date='2018-07-1')
-summary.create_dataset()
-df=summary.transformation()
